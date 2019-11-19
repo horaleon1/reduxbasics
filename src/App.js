@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import store from './store';
+import Equipo from "./Equipo";
+import Jugadores from "./Jugadores";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Title = props => {
+  return <h1>{props.title}</h1>;
+};
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <Title title="Administrador de Jugadores" />
+          <Jugadores />
+          <Equipo />
+        </div>
+      </Provider>
+    );
+  }
 }
-
-export default App;
